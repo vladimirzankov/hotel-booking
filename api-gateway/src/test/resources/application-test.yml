@@ -1,0 +1,12 @@
+spring:
+  main:
+    web-application-type: reactive
+eureka:
+  client:
+    enabled: false
+auth:
+  jwt:
+    secret: this-is-a-test-secret-32+bytes-long-OK
+logging:
+  level:
+    root: WARN

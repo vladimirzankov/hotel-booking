@@ -1,0 +1,20 @@
+server: { port: 8081 }
+spring:
+  application.name: hotel-api
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  datasource:
+    url: jdbc:h2:mem:hotel;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate.ddl-auto: none
+    open-in-view: false
+  sql.init.mode: always
+management.endpoints.web.exposure.include: health,info,prometheus
+eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
+auth:
+  jwt:
+    secret: ${AUTH_JWT_SECRET:0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCD}

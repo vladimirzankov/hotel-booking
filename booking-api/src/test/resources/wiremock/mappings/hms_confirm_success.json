@@ -1,0 +1,11 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/TODO/holds/.+/confirm"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "bodyFileName": "confirm_success.json"
+  }
+}

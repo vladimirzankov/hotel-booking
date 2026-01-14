@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - RemoveRequestHeader=Cookie
+      routes:
+        - id: hotel-api
+          uri: lb://hotel-api
+          predicates:
+            - Path=/api/hotels/**,/api/rooms/**
+        - id: booking-api
+          uri: lb://booking-api
+          predicates:
+            - Path=/user/**,/booking/**,/bookings/**
+        - id: deny-internal
+          uri: no://op
+          predicates:
+            - Path=/internal/**
+          filters:
+            - SetStatus=404
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+auth:
+  jwt:
+    secret: ${AUTH_JWT_SECRET:0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCD}

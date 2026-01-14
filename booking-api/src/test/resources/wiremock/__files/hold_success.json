@@ -1,0 +1,5 @@
+{
+  "holdId": "HOLD-123",
+  "status": "HELD",
+  "requestId": "{{$randomValue length=36 type=ALPHANUMERIC}}"  // TODO: по контракту
+}

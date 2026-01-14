@@ -1,0 +1,11 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/TODO/holds"
+  },
+  "response": {
+    "status": 201,
+    "headers": { "Content-Type": "application/json" },
+    "bodyFileName": "hold_success.json"
+  }
+}

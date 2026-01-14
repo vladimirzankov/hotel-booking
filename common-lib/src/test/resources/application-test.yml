@@ -1,0 +1,9 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    default-property-inclusion: non_null
+
+logging:
+  level:
+    root: INFO
